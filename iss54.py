@@ -1,6 +1,9 @@
 import numpy as np
+import time
+import dick as di
 
-def func():
+def func(int a=0):
+	print(a)
 	print("this is func")
 	
 class thing():
@@ -11,4 +14,3 @@ class thing():
 	
 if __name__ == __main__ :
 	func()
- 
