@@ -26,13 +26,33 @@ def main_loop():
     while not done:
         # handle keyboard events
         for event in pg.event.get():
-            if (event.type == QUIT):
+            if (event.type == pg.QUIT):
                 return 0
-        keystate = pg.key.get_pressed()
+        type = pg.event.event_name(event.type)
+        if(type == "KeyDown"):
+            #print(event.unicode, event.key, event.mod)
+            if(event.key == 13):
+                action = "Enter"
+            if(event.key == 32):
+                action = "Space"
+            if(event.key == 273):
+                action = "UpArrow"
+            if(event.key == 276):
+                action = "LeftArrow"
+            if(event.key == 274):
+                action = "DownArrow"
+            if(event.key == 275):
+                action = "RightArrow"
+            if(event.key == 27):
+                action = "Esc"
+            if(event.key == 304):
+                action = "LShift"
+            if(event.key == 306):
+                action = "LCtrl"    
         # send this state to the core
-        info, list_to_draw = core_.handle_event(keystate)
+        info, list_to_draw = core_.handle_event(action)
         # sometimes core wants to quit game, we will handle it
-        if("exit" in info):
+        if("Exit" in info):
             done = True
         # draw all things that core wants
         dep.draw(info, list_to_draw)
