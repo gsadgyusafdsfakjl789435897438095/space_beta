@@ -55,7 +55,7 @@ def main_loop():
         if("Exit" in info):
             done = True
         # draw all things that core wants
-        dep.draw(info, list_to_draw)
+        dep.handle(info, list_to_draw)
         #cap the framerate
         clock.tick(40)
 
